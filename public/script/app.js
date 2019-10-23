@@ -33,6 +33,13 @@ $(document).ready(function(){
     });
   });
 
+  $('#show-pword').on('click', function(){
+    if('password' == $('#pword-input').attr('type')){
+         $('#pword-input').prop('type', 'text');
+    }else{
+         $('#pword-input').prop('type', 'password');
+    }  });
+
 });
 
 function getQuoteHtml(quote) {

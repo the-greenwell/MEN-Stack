@@ -51,7 +51,7 @@ app.get('/quotes', function (req, res) {
   if (req.user) {
     res.sendFile('views/quotes.html' , { root : __dirname});
   } else {
-      res.status(401).redirect('/signup');
+      res.status(401).redirect('/');
   }
 });
 
