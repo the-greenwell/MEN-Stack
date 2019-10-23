@@ -1,20 +1,24 @@
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
-app.set('view engine','pug');
+const db = require('./models');
+const controllers = require('./controllers');
 
-app.get('/', function(req,res){
-  res.render('index',{title:'Home',message:'Welcome to the Home Page!'});
+require('dotenv').config();
+
+app.use(express.static('public'))
+
+app.use(bodyParser.urlencoded({extended:true}));
+
+app.get('/', function (req, res) {
+  res.sendFile('views/index.html' , { root : __dirname});
 });
 
-app.route('/about').get(function(req,res){
-  res.render('about',{title:'About',message:'Lorem Ipsem!'});
-})
 
-app.route('/contact').get(function(req,res){
-  res.render('contact',{title:'Contact',message:'Contact me here!'});
-});
+app.get('/api/quotes', controllers.quotes.index);
+app.post('/api/quotes', controllers.quotes.create);
+app.delete('/api/quotes/:quote_id', controllers.quotes.destroy)
 
-var server = app.listen(3000,function(){
-
-});
+var server = app.listen(process.env.PORT,() => console.log(`listening on ${process.env.PORT}`));
