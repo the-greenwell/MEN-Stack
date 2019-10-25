@@ -43,10 +43,11 @@ $(document).ready(function(){
 });
 
 function getQuoteHtml(quote) {
+  var author = quote.quoteAuthor[0].username
   return `<hr>
           <p>
             <b>${quote.quote}</b>
-            by ${quote.name}
+            - ${quote.name}
             <button type="button" name="button" class="deleteBtn btn btn-danger pull-right" data-id=${quote._id}>Delete</button>
           </p>`;
 }
@@ -67,8 +68,7 @@ function handleSuccess(json) {
 }
 
 function handleError(e) {
-  console.log('uh oh');
-  $('#QuoteTarget').text('Failed to load quotes, is the server working?');
+  console.log('uh oh', e);
 }
 
 function newQuoteSuccess(json) {

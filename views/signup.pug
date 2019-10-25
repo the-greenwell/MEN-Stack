@@ -1,0 +1,44 @@
+doctype html
+html(lang='en')
+  head
+    title QA Sign Up
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+
+    // STYLESHEETS
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/style/styles.css')
+
+    // VENDOR SCRIPTS
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js')
+    script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js')
+
+    // APPLICATION SCRIPTS
+    script(src='/script/app.js')
+
+
+  body
+    h1.text-center Quote App
+    h3.text-center Sign Up
+    br
+    form.form-inline.text-center(method='POST', action='/signup')
+      .form-group
+        label(for='quote') Name
+        input.form-control(type='text', name='name', placeholder='Write your name', required='')
+      br
+      br
+      .form-group
+        label(for='username') Username
+        input.form-control(type='text', name='username', placeholder='Pick a username', required='')
+      br
+      br
+      .form-group
+        label(for='password') Password
+        input#pword-input.form-control(type='password', name='password', placeholder='Enter a password', required='')
+        br
+        input#show-pword.form-control(type='checkbox', name='show-pword')
+        label(for='show-pword')
+          small Show Password?
+      br
+      br
+      button.btn.btn-default.text-center(type='submit') Sign Up
