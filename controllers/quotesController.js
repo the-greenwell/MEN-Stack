@@ -7,7 +7,7 @@ function index(req, res) {
   if (req.isAuthenticated()){
     db.Quote.find({}, function(err,allQuotes) {
       if (err) { console.log('error',err)}
-      res.json(allQuotes)
+      res.json({quotes:allQuotes,user:req.user._id})
     }).populate('quoteAuthor')
   } else {
     res.send('You\'re not authorized to do that')
@@ -16,17 +16,19 @@ function index(req, res) {
 
 function create(req,res) {
   if (req.isAuthenticated()){
-    var user = req.user._id
+    var user = req.user
     var quote = new db.Quote({
       name: req.user.username,
       quote: req.body.quote,
       quoteAuthor: user
     })
-    console.log('this is ' + req.user._id)
+
     quote.save(function(err,savedQuote){
       if(err){console.log(err)}
-      console.log(savedQuote.quoteAuthor)
-      res.json(savedQuote)
+      db.Quote.findOne(savedQuote, function(err,newQuote) {
+        if (err) { console.log('error',err)}
+        res.json(newQuote)
+      }).populate('quoteAuthor')
     })
 
     req.user.postedQuotes.push(quote)
