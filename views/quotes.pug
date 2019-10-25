@@ -1,0 +1,36 @@
+doctype html
+html(lang='en')
+  head
+    title Quote App
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+
+    // STYLESHEETS
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/style/styles.css')
+
+    // VENDOR SCRIPTS
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js')
+    script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js')
+
+    // APPLICATION SCRIPTS
+    script(src='/script/app.js')
+
+
+  body
+    .container.text-center
+      h1.text-center Quote App
+      h4.text-center Welcome #{name}
+      form.form-inline(action='/logout', method='GET')
+        button.btn.btn-default.text-center(type='submit') Log Out
+      br
+      .row
+        .col-md-8.col-md-offset-2
+          form#newQuoteForm.form-inline.text-center
+            .form-group
+              label(for='quote') Quote
+              input.form-control(type='text', name='quote', placeholder='Write your message', required='')
+            br
+            br
+            button.btn.btn-default.text-center(type='submit') Post Quote
+          #QuoteTarget
