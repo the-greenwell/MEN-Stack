@@ -17,22 +17,26 @@ html
     script(src='/script/app.js')
 
   body
-    h1.text-center Quote App
-    h3.text-center Log In
-    br
-    form.form-inline.text-center(method='POST', action='/login')
-      .form-group
-        label(for='username') Username
-        input.form-control(type='text', name='username', placeholder='Your username', required='')
+    .container.text-center
+      h1.text-center Quote App
       br
+      a.btn.btn-default.text-center(href='/signup', type='submit') Sign Up
       br
-      .form-group
-        label(for='password') Password
-        input#pword-input.form-control(type='password', name='password', placeholder='Your password', required='')
+      h3.text-center Log In
+      br
+      form.form-inline.text-center(method='POST', action='/login')
+        .form-group
+          label(for='username') Username
+          input.form-control(type='text', name='username', placeholder='Your username', required='')
         br
-        input#show-pword.form-control(type='checkbox', name='show-pword')
-        label(for='show-pword')
-          small Show Password?
-      br
-      br
-      button.btn.btn-default.text-center(type='submit') Log In
+        br
+        .form-group
+          label(for='password') Password
+          input#pword-input.form-control(type='password', name='password', placeholder='Your password', required='')
+          br
+          input#show-pword.form-control(type='checkbox', name='show-pword')
+          label(for='show-pword')
+            small Show Password?
+        br
+        br
+        button.btn.btn-default.text-center(type='submit') Log In

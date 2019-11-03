@@ -25,7 +25,6 @@ $(document).ready(function(){
   });
 
   $quotesList.on('click', '.deleteBtn', function() {
-    console.log('clicked delete button to', '/api/quotes/'+$(this).attr('data-id'));
     $.ajax({
       method: 'DELETE',
       url: '/api/quotes/'+$(this).attr('data-id'),
@@ -44,6 +43,7 @@ $(document).ready(function(){
 });
 
 function getQuoteHtml(quote) {
+  console.log($('#showOptions').val());
   return `<hr>
           <p>
             <b>${quote.quote}</b>
